@@ -1,0 +1,3694 @@
+[
+  {
+    "Id": "498544e8-a9e4-467a-a58c-afb9a7ff77d8",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T17:55:25.495995Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "User Login Service",
+    "Description": "Handles authentication and login processes for users.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "44ee7283-732e-4208-9e9b-22768dafe350",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "a9a67b77-f05b-47bd-8677-66d76ea421f6",
+      "Name": "Program.cs",
+      "ParentId": "44ee7283-732e-4208-9e9b-22768dafe350",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing UserLoginService.Services;\nusing UserLoginService.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddScoped<IUserRepository, UserRepository>();\nbuilder.Services.AddScoped<IAuthService, AuthService>();\n\nbuilder.Services.AddLogging();\n// Authentication middleware configuration can be added here if needed\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "5f3e6ef5-1c65-4e2b-ab87-9f45e0414577",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T17:55:53.419147Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Token Management System",
+    "Description": "Manages the creation, validation, and storage of security tokens.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e2b518aa-f7b1-4c69-aafb-fec2ffece993",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "d02b533e-398e-4b1d-a3c1-9af286566a83",
+      "Name": "Program.cs",
+      "ParentId": "e2b518aa-f7b1-4c69-aafb-fec2ffece993",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing TokenManagementSystem.Services;\nusing TokenManagementSystem.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<ITokenService, TokenService>();\nbuilder.Services.AddSingleton<ITokenRepository, TokenRepository>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "92ea263f-2aaa-470f-81f0-e92783de4ec0",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T17:56:40.934342Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Two-Factor Authentication Service",
+    "Description": "Implements two-factor authentication using SMS, email, or app-based verification.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "31ecad81-7526-4ba5-bb51-3f1af045a793",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "9536cc0a-1d03-47a4-a0c2-a0485811f205",
+      "Name": "Program.cs",
+      "ParentId": "31ecad81-7526-4ba5-bb51-3f1af045a793",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace TwoFactorAuthenticationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "0684d4af-95f9-4322-8643-6bd5f187b9f3",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T17:57:12.673935Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "User Registration Portal",
+    "Description": "Provides a platform for new users to sign up and create accounts.",
+    "Tags": [
+      {
+        "Id": "22222222-2222-2222-2222-222222222222",
+        "Name": "Registration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "cafbb8e5-64ba-4849-91f1-70d950f76d87",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "0ffa2282-4a69-48ec-bec4-113695a2d1aa",
+      "Name": "Program.cs",
+      "ParentId": "cafbb8e5-64ba-4849-91f1-70d950f76d87",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace UserRegistrationPortal\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "b5e57b3d-1428-499d-9d81-beb87e598618",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T17:57:44.099390Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Password Reset Tool",
+    "Description": "Facilitates secure password reset functionality for users.",
+    "Tags": [
+      {
+        "Id": "33333333-3333-3333-3333-333333333333",
+        "Name": "Password"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "8e84d52f-dae1-42da-99e5-70c43b8ff940",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "3361580b-c5e2-462a-831f-a637cc4d349f",
+      "Name": "Program.cs",
+      "ParentId": "8e84d52f-dae1-42da-99e5-70c43b8ff940",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing PasswordResetTool.Services;\nusing PasswordResetTool.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IPasswordResetService, PasswordResetService>();\nbuilder.Services.AddSingleton<IPasswordResetRepository, PasswordResetRepository>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "9ccd7185-a504-4728-931b-23a3f6146a66",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T17:58:10.773571Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Account Opening Service",
+    "Description": "Automates the creation of new bank accounts with proper validations.",
+    "Tags": [
+      {
+        "Id": "22222222-2222-2222-2222-222222222222",
+        "Name": "Registration"
+      },
+      {
+        "Id": "44444444-4444-4444-4444-444444444444",
+        "Name": "KYC"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "80813dfd-8de1-46ee-9f36-c2d3408ece63",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4a065ad3-5988-4a8d-a41b-2efd680a588a",
+      "Name": "Program.cs",
+      "ParentId": "80813dfd-8de1-46ee-9f36-c2d3408ece63",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing AccountOpeningService.Services;\nusing AccountOpeningService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IAccountService, AccountService>();\nbuilder.Services.AddSingleton<IAccountRepository, AccountRepository>();\nbuilder.Services.AddSingleton<IKycService, KycService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "ee740f14-10e9-4d00-ab0b-4bfbfcda0a0e",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T17:58:40.405260Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Customer Profile Manager",
+    "Description": "Manages customer profiles and personal information securely.",
+    "Tags": [
+      {
+        "Id": "44444444-4444-4444-4444-444444444444",
+        "Name": "KYC"
+      },
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      },
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "9fceeb30-a0b2-4986-b418-dcd463b22cb4",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "beb26ceb-243b-424b-b96d-dbb5b71239f1",
+      "Name": "Program.cs",
+      "ParentId": "9fceeb30-a0b2-4986-b418-dcd463b22cb4",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace CustomerProfileManager\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "41418269-efd8-4160-a9e0-f44922e6b51b",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T17:59:10.245792Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "KYC Verification System",
+    "Description": "Verifies customer identity documents to comply with KYC regulations.",
+    "Tags": [
+      {
+        "Id": "44444444-4444-4444-4444-444444444444",
+        "Name": "KYC"
+      },
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "b5a8321f-c44d-411b-8b03-09d4384b73ed",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "5bdc5ef8-318f-422c-ab39-c21277462aa1",
+      "Name": "Program.cs",
+      "ParentId": "b5a8321f-c44d-411b-8b03-09d4384b73ed",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing KYCVerificationSystem.Services;\nusing KYCVerificationSystem.Data;\n\nnamespace KYCVerificationSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<IKycService, KycService>();\n            builder.Services.AddSingleton<IKycRepository, KycRepository>();\n            builder.Services.AddLogging();\n            \n            var app = builder.Build();\n            \n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n            \n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "8d02e843-0112-4dbf-b742-ec85aec70f5a",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T17:59:26.460890Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "AML Compliance Checker",
+    "Description": "Monitors transactions to ensure adherence to anti-money laundering guidelines.",
+    "Tags": [
+      {
+        "Id": "55555555-5555-5555-5555-555555555555",
+        "Name": "AML"
+      },
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "851b2860-bfbf-4a8e-a228-32c719a6b7e0",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "344e83a0-f3ed-49af-9b32-a5da86697f95",
+      "Name": "Program.cs",
+      "ParentId": "851b2860-bfbf-4a8e-a228-32c719a6b7e0",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing AMLComplianceChecker.Services;\nusing AMLComplianceChecker.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add services to the container\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IAMLComplianceService, AMLComplianceService>();\nbuilder.Services.AddSingleton<IAMLRepository, AMLRepository>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\n// Configure the HTTP request pipeline\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "ff459fd0-cb89-4b71-9c82-eee20d82cab2",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:00:00.684470Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Account Aggregation Service",
+    "Description": "Consolidates customer account data from multiple sources.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5e6e4dfe-ef87-4387-a0e0-77a7a9b50702",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "c1fa026c-db46-47f9-a568-933e56c42fac",
+      "Name": "Program.cs",
+      "ParentId": "5e6e4dfe-ef87-4387-a0e0-77a7a9b50702",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace AccountAggregationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3f6a4167-916f-4bc8-9002-9cf18c664d67",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:00:28.784773Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Transaction Processing Engine",
+    "Description": "Processes and records financial transactions reliably.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "1c0b8afa-e462-429c-8d1c-ee22ed7a1d45",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "ae7ae9ad-6e4c-4d86-87bf-7e760357763b",
+      "Name": "Program.cs",
+      "ParentId": "1c0b8afa-e462-429c-8d1c-ee22ed7a1d45",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace TransactionProcessingEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "2d5fdd00-e95d-4784-8f90-11fb0ba04f88",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:00:53.076577Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Transaction History Viewer",
+    "Description": "Provides detailed histories of user transactions.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "11ab8b1a-b83f-4f8b-a65b-5663fd9c7d90",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "0f5210a9-16b5-4ab5-a6a0-7740f2835b92",
+      "Name": "Program.cs",
+      "ParentId": "11ab8b1a-b83f-4f8b-a65b-5663fd9c7d90",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.EntityFrameworkCore;\nusing TransactionHistoryViewer.Data;\nusing TransactionHistoryViewer.Services;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\n\n// In production, configure the DbContext with a real database provider and connection string\nbuilder.Services.AddDbContext<BankDbContext>(options =>\n    options.UseSqlServer(builder.Configuration.GetConnectionString(\"BankDatabase\")));\n\nbuilder.Services.AddScoped<ITransactionHistoryService, TransactionHistoryService>();\nbuilder.Services.AddScoped<ITransactionRepository, TransactionRepository>();\n\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseAuthorization();\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "c9cc516b-8187-4f3f-9512-ee8ee91d1fd9",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:01:18.618735Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Payment Gateway Connector",
+    "Description": "Interfaces with external payment gateways for smooth payment processing.",
+    "Tags": [
+      {
+        "Id": "77777777-7777-7777-7777-777777777777",
+        "Name": "Payment"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "eef2ceef-4e71-47b5-9d8f-b2fe80357b0b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "17fdbddc-8850-4505-9a9c-81c2d7103511",
+      "Name": "Program.cs",
+      "ParentId": "eef2ceef-4e71-47b5-9d8f-b2fe80357b0b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing PaymentGatewayConnector.Services;\nusing PaymentGatewayConnector.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddScoped<IPaymentProviderAdapter, PaymentProviderAdapter>();\nbuilder.Services.AddScoped<IGatewayConnectorService, GatewayConnectorService>();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "f58af09e-bbe0-4342-943d-43cd01e2ca0f",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:01:49.263154Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Refund Processing Service",
+    "Description": "Handles the initiation and processing of customer refunds.",
+    "Tags": [
+      {
+        "Id": "88888888-8888-8888-8888-888888888888",
+        "Name": "Refund"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "77826000-f665-4ac5-af84-b55b8eece5fc",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "694ef484-efdf-4d80-a456-b4bf7bfd9104",
+      "Name": "Program.cs",
+      "ParentId": "77826000-f665-4ac5-af84-b55b8eece5fc",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace RefundProcessingService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3cd7c42b-0bbe-45be-ac51-9fb49ab96384",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:02:26.233732Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Settlement Engine",
+    "Description": "Coordinates end-of-day settlement and transaction clearing.",
+    "Tags": [
+      {
+        "Id": "99999999-9999-9999-9999-999999999999",
+        "Name": "Settlement"
+      },
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5edd1557-d19c-405a-b6e1-c8d924867601",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4c9dffae-0738-4ebe-9c70-d374f1e12b2a",
+      "Name": "Program.cs",
+      "ParentId": "5edd1557-d19c-405a-b6e1-c8d924867601",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore;\nusing Microsoft.AspNetCore.Hosting;\n\nnamespace SettlementEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateWebHostBuilder(args).Build().Run();\n        }\n\n        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>\n            WebHost.CreateDefaultBuilder(args)\n                .UseStartup<Startup>();\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "6b3ee323-eb6e-45c3-9cdb-decc48b9b893",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:02:49.413531Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Fraud Detection System",
+    "Description": "Analyzes transactions to detect and prevent fraudulent activities.",
+    "Tags": [
+      {
+        "Id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "Name": "Fraud"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e7242e38-062d-4a0f-8344-4a481d6c4a4f",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "31d404fa-b865-4553-998a-406ace4777c3",
+      "Name": "Program.cs",
+      "ParentId": "e7242e38-062d-4a0f-8344-4a481d6c4a4f",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace FraudDetectionSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3b4c402d-6722-430b-bef3-2b6753ae015b",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:03:09.350794Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Risk Assessment Engine",
+    "Description": "Calculates risk scores for transactions and customer activities.",
+    "Tags": [
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "ecdb7466-e15d-4732-a00c-61f69b81f45e",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "17719bbc-6e51-45c9-a8ea-ddffd416fcbf",
+      "Name": "Program.cs",
+      "ParentId": "ecdb7466-e15d-4732-a00c-61f69b81f45e",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace RiskAssessmentEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "1d23a12f-e7da-4dd2-89fc-821a6ff9d16b",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:03:40.286336Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Audit Logging System",
+    "Description": "Records system events and transactions for auditing purposes.",
+    "Tags": [
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "b9ac20fa-f0cc-4118-b00b-03c96fd04533",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "269a0adb-ed4c-48dd-bb16-89e71f77b975",
+      "Name": "Program.cs",
+      "ParentId": "b9ac20fa-f0cc-4118-b00b-03c96fd04533",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace AuditLoggingSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "e7f1266b-09e3-4f14-99a5-1ff4a52e5231",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:04:07.633076Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Regulatory Reporting Tool",
+    "Description": "Generates reports to comply with financial regulatory requirements.",
+    "Tags": [
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      },
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "bae05a0c-caee-4259-8124-b7c745d4d023",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "67093cd9-8fcd-4d29-a42a-b8a26d0a645a",
+      "Name": "Program.cs",
+      "ParentId": "bae05a0c-caee-4259-8124-b7c745d4d023",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing RegulatoryReportingTool.Services;\nusing RegulatoryReportingTool.Data;\n\nnamespace RegulatoryReportingTool\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n\n            // Add services to the container.\n            builder.Services.AddControllers();\n            builder.Services.AddScoped<IReportService, ReportService>();\n            builder.Services.AddSingleton<IReportRepository, ReportRepository>();\n            builder.Services.AddLogging();\n\n            var app = builder.Build();\n\n            // Configure the HTTP request pipeline.\n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n\n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "709e1de1-e6c3-4b71-8527-f5798f11d7e2",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:04:33.700203Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Credit Score Integration Service",
+    "Description": "Connects with credit bureaus to retrieve customer credit scores.",
+    "Tags": [
+      {
+        "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+        "Name": "Credit"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f3ea7e58-5ab1-4f13-bb6a-750a4a94f573",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "9a63d2fb-9b8a-435f-b0fe-6b1569af4a02",
+      "Name": "Program.cs",
+      "ParentId": "f3ea7e58-5ab1-4f13-bb6a-750a4a94f573",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace CreditScoreIntegrationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "806aaa8d-ebe2-40b3-9e5d-c6ebf1f7f9f5",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:05:08.111571Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "External Payment Connector",
+    "Description": "Links with providers like PayPal and Stripe for external payments.",
+    "Tags": [
+      {
+        "Id": "77777777-7777-7777-7777-777777777777",
+        "Name": "Payment"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "8703fe11-5e85-4c3a-8c26-b57dfb14bc7f",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "63e2e9ed-ce56-45bf-bd4c-aa73c8179183",
+      "Name": "Program.cs",
+      "ParentId": "8703fe11-5e85-4c3a-8c26-b57dfb14bc7f",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ExternalPaymentConnector\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "348051da-d14e-495e-b7b7-bc7d1105a5e8",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:05:38.197837Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Financial Data Aggregator",
+    "Description": "Collects financial market data from various external sources.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5027310c-92d2-4eb1-a4b9-8dff989b8d4b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "3f1e084d-4074-4cea-ad92-ef114227bca9",
+      "Name": "Program.cs",
+      "ParentId": "5027310c-92d2-4eb1-a4b9-8dff989b8d4b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing FinancialDataAggregator.Services;\nusing FinancialDataAggregator.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Register controllers and other services\nbuilder.Services.AddControllers();\n\n// Register HttpClient for external API calls\nbuilder.Services.AddHttpClient();\n\n// Register application services\nbuilder.Services.AddSingleton<IAggregatorService, AggregatorService>();\nbuilder.Services.AddSingleton<IExternalDataProvider, ExternalDataProvider>();\n\n// Register Swagger for API documentation\nbuilder.Services.AddEndpointsApiExplorer();\nbuilder.Services.AddSwaggerGen();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment()) {\n    app.UseSwagger();\n    app.UseSwaggerUI();\n}\n\napp.UseHttpsRedirection();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "43c86e30-187a-4f2d-98d2-e2bdbbe130b4",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:05:58.766676Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "SMS Notification Service",
+    "Description": "Sends SMS alerts for transactional updates and system events.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "ed9d4711-0b3b-46de-b698-874a4338e5e7",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "d0c77adb-9305-423e-b374-64e8b9c5a8b4",
+      "Name": "Program.cs",
+      "ParentId": "ed9d4711-0b3b-46de-b698-874a4338e5e7",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing SMSNotificationService.Services;\nusing SMSNotificationService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add services to the container.\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddScoped<ISMSService, SMSService>();\nbuilder.Services.AddScoped<ISMSAdapter, SMSAdapter>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "9c382503-f9b1-4b5a-8b95-143ae8611270",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:06:23.884736Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Email Notification System",
+    "Description": "Dispatches email notifications for various operations and alerts.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "9ef36649-c7de-4a84-a7ea-9471f3bc4cd3",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "9b5efcf0-3bb1-447d-b03a-1ff81e070e98",
+      "Name": "Program.cs",
+      "ParentId": "9ef36649-c7de-4a84-a7ea-9471f3bc4cd3",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing EmailNotificationSystem.Services;\nusing EmailNotificationSystem.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add services to the container\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IEmailService, EmailService>();\nbuilder.Services.AddSingleton<IEmailLogger, EmailLogger>();\nbuilder.Services.Configure<EmailNotificationSystem.Models.SmtpSettings>(builder.Configuration.GetSection(\"SmtpSettings\"));\n\nvar app = builder.Build();\n\n// Configure the HTTP request pipeline\napp.UseRouting();\napp.UseEndpoints(endpoints => { endpoints.MapControllers(); });\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "75fb1b63-02ed-46ec-a29c-96b5aad9b9f8",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:06:46.781766Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Push Notification Service",
+    "Description": "Delivers mobile push notifications to keep users informed.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "0451acee-099c-49ad-b067-ad915efb1e7d",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "9dc4562a-5996-48fe-a94f-b2453117ea62",
+      "Name": "Program.cs",
+      "ParentId": "0451acee-099c-49ad-b067-ad915efb1e7d",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing PushNotificationService.Services;\nusing PushNotificationService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddSingleton<IPushNotificationProvider, FirebasePushNotificationProvider>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "1171f0b9-979b-42e8-980f-4dc17b3dbf4b",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:07:18.403888Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Centralized Logging Service",
+    "Description": "Aggregates logs from multiple microservices for analysis.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "4eeb891e-e821-485d-9ef3-135a48a436e6",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "201bb587-7ac6-48b0-bc24-89c1063fef82",
+      "Name": "Program.cs",
+      "ParentId": "4eeb891e-e821-485d-9ef3-135a48a436e6",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace CentralizedLoggingService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "82bef572-00c8-4b78-ab50-6489514f7acc",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:07:48.600637Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Configuration Manager",
+    "Description": "Dynamically manages configuration settings across the system.",
+    "Tags": [
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "7d099013-38a0-4170-ae78-046e87f523d4",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "328edf7b-d84b-4348-afbc-deb8c3e323f4",
+      "Name": "Program.cs",
+      "ParentId": "7d099013-38a0-4170-ae78-046e87f523d4",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ConfigurationManager\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3a431946-5c8b-49d0-b3b7-4bebe025a0e6",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:08:21.779862Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Service Discovery Tool",
+    "Description": "Helps microservices locate and communicate with each other efficiently.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "397c271c-81bb-4e02-8d8b-295662f90486",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "8133c62d-4f77-475f-913c-565ff631ae4b",
+      "Name": "Program.cs",
+      "ParentId": "397c271c-81bb-4e02-8d8b-295662f90486",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ServiceDiscoveryTool\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "2deca278-2f36-4c1d-84dd-9e07e48f75af",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:08:46.925321Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Caching Service",
+    "Description": "Implements caching to speed up data retrieval processes.",
+    "Tags": [
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "44300999-40d9-4915-a2c7-a798586fbd7b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b9fb7e28-bd04-4915-90de-b5cc9db7e582",
+      "Name": "Program.cs",
+      "ParentId": "44300999-40d9-4915-a2c7-a798586fbd7b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace DataCachingService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7e1b5e83-11c1-47f8-a4be-9e21e245228d",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:09:13.874622Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Real-Time Analytics Dashboard",
+    "Description": "Displays live analytics data for monitoring performance.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "48c292a6-51db-441d-9c64-b4c3b91599c6",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4842e6ee-3571-4a1f-b7ce-55143c2efcbb",
+      "Name": "Program.cs",
+      "ParentId": "48c292a6-51db-441d-9c64-b4c3b91599c6",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace RealTimeAnalyticsDashboard\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3d83a8ab-79ef-42bf-804d-f48c03def882",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:09:42.254905Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Historical Reporting System",
+    "Description": "Aggregates and reports on historical financial data.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e16b4db5-0ef7-4cc8-9888-b796fa0c08d4",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "698400ad-67a1-45dd-bd76-41b09abaa01c",
+      "Name": "Program.cs",
+      "ParentId": "e16b4db5-0ef7-4cc8-9888-b796fa0c08d4",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace HistoricalReportingSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7732e930-3517-4abb-9624-735edcb444f2",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:10:11.122558Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "User Behavior Analytics",
+    "Description": "Analyzes customer interactions to improve service offerings.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "223a07ca-3634-4331-876e-4f8154a6bb3d",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "ad33f73e-9b25-4bcd-86e4-849223c65159",
+      "Name": "Program.cs",
+      "ParentId": "223a07ca-3634-4331-876e-4f8154a6bb3d",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace UserBehaviorAnalytics\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "759d6689-ba14-4998-9b1d-f0d129b2f72a",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:10:48.698528Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Export Utility",
+    "Description": "Facilitates the export of data for reporting and backup purposes.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "511da801-3cf9-4425-b7d0-3efd0b30f308",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "e85da1e6-598d-465f-8408-3092d0b76d07",
+      "Name": "Program.cs",
+      "ParentId": "511da801-3cf9-4425-b7d0-3efd0b30f308",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing DataExportUtility.Services;\nusing DataExportUtility.Data;\nusing Microsoft.Extensions.Configuration;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add services to the container.\nbuilder.Services.AddControllers();\nbuilder.Services.AddEndpointsApiExplorer();\nbuilder.Services.AddSwaggerGen();\n\nbuilder.Services.AddSingleton<IExportService, ExportService>();\nbuilder.Services.AddSingleton<IExportRepository, ExportRepository>();\nbuilder.Services.AddLogging();\n\n// Register configuration\nbuilder.Services.AddSingleton<IConfiguration>(builder.Configuration);\n\nvar app = builder.Build();\n\n// Configure the HTTP request pipeline.\nif (app.Environment.IsDevelopment())\n{\n    app.UseSwagger();\n    app.UseSwaggerUI();\n}\n\napp.UseRouting();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "2a6fa950-ad8b-4237-b8fc-e0a4382a3db2",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:11:23.581460Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Import Utility",
+    "Description": "Handles the import of external data into the system.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5c3450ee-c908-43d3-a8c9-2d88da88ef9f",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b2288115-6e06-4e70-b20d-251919ddb57f",
+      "Name": "Program.cs",
+      "ParentId": "5c3450ee-c908-43d3-a8c9-2d88da88ef9f",
+      "Type": 1,
+      "Text": "using System.Threading.Tasks;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.Extensions.Logging;\n\nnamespace DataImportUtility\n{\n    public class Program\n    {\n        public static async Task Main(string[] args)\n        {\n            var host = Host.CreateDefaultBuilder(args)\n                .ConfigureServices((hostContext, services) =>\n                {\n                    services.AddHttpClient();\n                    services.AddSingleton<Services.IDataImportService, Services.DataImportService>();\n                    services.AddSingleton<Clients.IExternalDataClient, Clients.ExternalDataClient>();\n                    services.AddSingleton<Infrastructure.IDataRepository, Infrastructure.DataRepository>();\n                    services.AddHostedService<Workers.ImportWorker>();\n                })\n                .ConfigureLogging(logging =>\n                {\n                    logging.ClearProviders();\n                    logging.AddConsole();\n                })\n                .Build();\n\n            await host.RunAsync();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "68828aaa-6763-4ed2-925a-9d8b438f8b67",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:11:39.168691Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Standardized Error Handling",
+    "Description": "Provides uniform error responses and exception management.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f5a41bce-ece6-44af-9dc5-c563fb8d834b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b80ca221-2e55-4f65-8170-44eb8e7f803f",
+      "Name": "Program.cs",
+      "ParentId": "f5a41bce-ece6-44af-9dc5-c563fb8d834b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace StandardizedErrorHandling\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "236f21ee-f319-4370-9374-34b4b2f8d7ba",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:12:01.570514Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Validation Engine",
+    "Description": "Ensures data integrity through rigorous validation checks.",
+    "Tags": [
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      },
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "22444c44-bebf-4d36-aa88-1d24532b8b10",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "dab6cf74-7a1a-4a55-aa20-39b4df3c983c",
+      "Name": "Program.cs",
+      "ParentId": "22444c44-bebf-4d36-aa88-1d24532b8b10",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace DataValidationEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "1279d5d6-826b-4e58-be29-e659b5120065",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:12:32.178368Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "API Gateway Service",
+    "Description": "Offers a unified access point for multiple microservices.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "1a3405f3-545b-41e6-b859-b704c943054e",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "bd8f2db3-a420-4826-ab16-b9e64d06ab2a",
+      "Name": "Program.cs",
+      "ParentId": "1a3405f3-545b-41e6-b859-b704c943054e",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace APIGatewayService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "bd44796b-5c80-41cb-9ffe-1b3a691a63d1",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:13:03.977191Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Microservices Orchestrator",
+    "Description": "Coordinates interactions among various microservices.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "d84c7858-190f-4b0a-a578-1269e48117ae",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "f6f7f047-61c6-4a13-9a00-27af0571b255",
+      "Name": "Program.cs",
+      "ParentId": "d84c7858-190f-4b0a-a578-1269e48117ae",
+      "Type": 1,
+      "Text": "using System;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace MicroservicesOrchestrator\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "e7eed16b-d59b-40ea-81b6-837c84ddeb43",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:13:33.876259Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Session Management System",
+    "Description": "Manages user sessions and maintains session data.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "bf8f8028-1a38-4f16-8ede-25a0862b2b01",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "bf58d6e1-42de-4991-add8-e49e0e9aaf11",
+      "Name": "Program.cs",
+      "ParentId": "bf8f8028-1a38-4f16-8ede-25a0862b2b01",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing SessionManagementSystem.Services;\nusing SessionManagementSystem.Data;\nusing SessionManagementSystem.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<ISessionService, SessionService>();\nbuilder.Services.AddSingleton<ISessionRepository, SessionRepository>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\n// Middleware to validate session based on header\napp.UseMiddleware<SessionMiddleware>();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "08782f52-e988-4925-8b56-b41c9c086a27",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:14:03.550039Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "OAuth Integration Service",
+    "Description": "Integrates with OAuth providers for secure user access.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "b6f91a18-5052-4edc-a45e-031a87deb0ca",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "182f6bc8-9fb5-402b-8150-63238c478a37",
+      "Name": "Program.cs",
+      "ParentId": "b6f91a18-5052-4edc-a45e-031a87deb0ca",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing OAuthIntegrationService.Services;\n\nnamespace OAuthIntegrationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddHttpClient(\"OAuthClient\");\n            builder.Services.AddSingleton<IOAuthService, OAuthService>();\n\n            var app = builder.Build();\n\n            app.UseRouting();\n            app.UseAuthorization();\n            app.MapControllers();\n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "636a681f-83f7-4a15-8314-c79de6a4c261",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:14:30.368992Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Customer Feedback Collector",
+    "Description": "Gathers and processes customer feedback for service improvements.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "d2d674bb-f7cf-4c58-9fd3-d4c0a7ab96af",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "df58860e-9d45-4c15-96f6-004cf964477f",
+      "Name": "Program.cs",
+      "ParentId": "d2d674bb-f7cf-4c58-9fd3-d4c0a7ab96af",
+      "Type": 1,
+      "Text": "using CustomerFeedbackCollector.Services;\nusing CustomerFeedbackCollector.Data;\nusing CustomerFeedbackCollector.Infrastructure;\nusing Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.Extensions.Logging;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IFeedbackService, FeedbackService>();\nbuilder.Services.AddSingleton<IFeedbackRepository, FeedbackRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddLogging();\nbuilder.Services.AddEndpointsApiExplorer();\nbuilder.Services.AddSwaggerGen();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseSwagger();\n    app.UseSwaggerUI();\n}\n\napp.UseRouting();\napp.UseAuthorization();\napp.MapControllers();\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "97df1e91-8c86-4652-8426-593deb4f2330",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:15:03.055736Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Chat Support Integration",
+    "Description": "Integrates live chat support into customer service platforms.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "2971c2af-5d7e-4446-a472-8ece588b072b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "75473904-8fb5-4c84-bc2b-ca46a6b53907",
+      "Name": "Program.cs",
+      "ParentId": "2971c2af-5d7e-4446-a472-8ece588b072b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ChatSupportIntegration\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "4b32587b-5e64-435c-9ba8-69740845bd5a",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:15:24.687251Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Virtual Assistant Service",
+    "Description": "Implements an AI-driven assistant for customer inquiries.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "12db2329-424f-45d8-8c27-1d91eb600314",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "3e33e737-7980-46fa-af7a-12860640f16f",
+      "Name": "Program.cs",
+      "ParentId": "12db2329-424f-45d8-8c27-1d91eb600314",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace VirtualAssistantService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "df835e54-ed59-4046-aa51-4669177e1f89",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:15:56.655505Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Investment Portfolio Manager",
+    "Description": "Manages investment portfolios and asset allocations.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "a10972b8-d190-450a-b627-1bbc12ce52ab",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "8d495e3c-a0c5-4f10-a3e1-45afdfc1a38f",
+      "Name": "Program.cs",
+      "ParentId": "a10972b8-d190-450a-b627-1bbc12ce52ab",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing InvestmentPortfolioManager.Services;\nusing InvestmentPortfolioManager.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddEndpointsApiExplorer();\nbuilder.Services.AddSwaggerGen();\n\nbuilder.Services.AddSingleton<IPortfolioService, PortfolioService>();\nbuilder.Services.AddSingleton<IPortfolioRepository, PortfolioRepository>();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n    app.UseSwagger();\n    app.UseSwaggerUI();\n}\n\napp.UseRouting();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "4df5d049-7622-4090-b862-bb384020b177",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:16:21.239257Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Loan Processing Engine",
+    "Description": "Automates the processing and approval of loan applications.",
+    "Tags": [
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+        "Name": "Credit"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "2d830f2a-77b3-429b-bb83-c36fd4a65221",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "d052b2fd-8358-40b7-9d1f-a3f521a0782b",
+      "Name": "Program.cs",
+      "ParentId": "2d830f2a-77b3-429b-bb83-c36fd4a65221",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace LoanProcessingEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "baa059d9-6c33-48e7-9a29-a101c210d165",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:16:45.480844Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Mortgage Calculation Service",
+    "Description": "Calculates mortgage details based on user inputs.",
+    "Tags": [
+      {
+        "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+        "Name": "Credit"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "550f4486-1d5f-4d61-bf9e-0e1217117631",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "7f287530-3ff1-4c2d-9850-adc66c8e8bee",
+      "Name": "Program.cs",
+      "ParentId": "550f4486-1d5f-4d61-bf9e-0e1217117631",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace MortgageCalculationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "03208c04-1b9b-41ed-911b-292254a01dfd",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:17:10.640653Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Insurance Quote Generator",
+    "Description": "Provides insurance quotes for various financial products.",
+    "Tags": [
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e28ce868-4575-487c-b499-75ccd08a53fd",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "beadb0e4-e65a-4214-9943-36b9aef5e065",
+      "Name": "Program.cs",
+      "ParentId": "e28ce868-4575-487c-b499-75ccd08a53fd",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing InsuranceQuoteGenerator.Services;\nusing InsuranceQuoteGenerator.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddScoped<IQuoteService, QuoteService>();\nbuilder.Services.AddScoped<IQuoteCalculator, QuoteCalculator>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7c033972-34ac-431c-837a-a62946547060",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:17:37.641947Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Digital Signature Service",
+    "Description": "Enables secure digital signing of documents.",
+    "Tags": [
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f9febb63-43be-4bfe-8f80-24459459ebee",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "536db21c-59bf-4ef6-8644-6431af2d800f",
+      "Name": "Program.cs",
+      "ParentId": "f9febb63-43be-4bfe-8f80-24459459ebee",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing DigitalSignatureService.Services;\nusing DigitalSignatureService.Infrastructure;\n\nnamespace DigitalSignatureService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<IDigitalSignatureService, DigitalSignatureService.Services.DigitalSignatureService>();\n            builder.Services.AddSingleton<ISignatureHelper, SignatureHelper>();\n            \n            var app = builder.Build();\n            \n            if (app.Environment.IsDevelopment())\n            {\n                app.UseDeveloperExceptionPage();\n            }\n            \n            app.UseRouting();\n            \n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n            \n            app.Run();\n        }\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "d39a9743-cd00-41f0-b25a-db0543b806c2",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:18:12.983661Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Document Management System",
+    "Description": "Stores and retrieves digital documents in a secure manner.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "34e4b09d-0526-4dd6-8856-0f7a5ca8ee1a",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "a6c11172-2542-4919-9fac-f95aaccd671c",
+      "Name": "Program.cs",
+      "ParentId": "34e4b09d-0526-4dd6-8856-0f7a5ca8ee1a",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace DocumentManagementSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "b73c177f-c73d-4d90-bcae-95e9a6f2c0d2",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:18:42.380665Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Electronic Statement Generator",
+    "Description": "Creates electronic statements for customer accounts.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "31116afa-4a91-4d86-8dce-15601955d226",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "46f48c66-fae7-41d5-ad81-b88cb8a395d9",
+      "Name": "Program.cs",
+      "ParentId": "31116afa-4a91-4d86-8dce-15601955d226",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ElectronicStatementGenerator\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "c5212788-0454-4269-a1da-23440509389c",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:19:17.782634Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "ATM Integration Service",
+    "Description": "Connects ATM networks with the core banking system.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "faf4d3fe-43f9-4f77-b27d-f3bd4b551abd",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "5ca9ffac-c6a4-4b55-a57d-7ba50c5e47f0",
+      "Name": "Program.cs",
+      "ParentId": "faf4d3fe-43f9-4f77-b27d-f3bd4b551abd",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ATMIntegrationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "93e36c0b-4c0d-4864-b95d-aee0d1dc5b53",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:19:46.580850Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Branch Locator Tool",
+    "Description": "Helps customers find nearby branches and ATMs easily.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "d853730e-cdbe-496c-b284-014ddbac18e2",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "c81cc3ae-999f-4fe7-827f-036b677cfc0e",
+      "Name": "Program.cs",
+      "ParentId": "d853730e-cdbe-496c-b284-014ddbac18e2",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace BranchLocatorTool\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "2db63039-1710-40ed-a27d-eebdb86d3d1b",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:20:25.586871Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Currency Exchange Service",
+    "Description": "Provides real-time currency exchange rates and conversions.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "580c9e22-e2ed-4f39-940a-ed01510200b0",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "3379bf4a-134b-45bc-af10-f62a41ac0959",
+      "Name": "Program.cs",
+      "ParentId": "580c9e22-e2ed-4f39-940a-ed01510200b0",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing CurrencyExchangeService.Services;\nusing CurrencyExchangeService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<IExchangeService, ExchangeService>();\nbuilder.Services.AddSingleton<IRateCache, RateCache>();\nbuilder.Services.AddSingleton<IExternalRateProvider, ExternalRateProvider>();\nbuilder.Services.AddSingleton<ILoggerService, LoggerService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints => { endpoints.MapControllers(); });\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "54ba24f4-29d1-4218-a7bc-edf716b8e7d1",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:20:57.025712Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Interest Rate Calculator",
+    "Description": "Computes interest rates for various account types.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "fc0c5ed2-026f-463f-908c-fe14801cc53e",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "75b73fb9-07dd-446e-8d5a-b7c98f193f2b",
+      "Name": "Program.cs",
+      "ParentId": "fc0c5ed2-026f-463f-908c-fe14801cc53e",
+      "Type": 1,
+      "Text": "using InterestRateCalculator.Services;\nusing InterestRateCalculator.Models;\nusing Microsoft.Extensions.Options;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Bind InterestRateOptions from configuration\nbuilder.Services.Configure<InterestRateOptions>(builder.Configuration.GetSection(\"InterestRateOptions\"));\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IInterestRateService, InterestRateService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "c0a18a4f-6ac7-4e25-9872-8bbf47075395",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:21:31.091244Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Budgeting Tool",
+    "Description": "Offers tools for budgeting and personal financial planning.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "3d551176-892e-4c81-8f05-e80294f643d7",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "74c5fb51-1c76-497d-9453-fa84641218b9",
+      "Name": "Program.cs",
+      "ParentId": "3d551176-892e-4c81-8f05-e80294f643d7",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing BudgetingTool.Services;\nusing BudgetingTool.Data;\nusing BudgetingTool.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IBudgetRepository, BudgetRepository>();\nbuilder.Services.AddSingleton<IBudgetService, BudgetService>();\nbuilder.Services.AddSingleton<IBudgetLogger, BudgetLogger>();\n\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "70771eb8-257e-4000-b763-885ca6366880",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:22:04.187236Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Financial Planning Assistant",
+    "Description": "Helps users set and track long-term financial goals.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "6ba9cfb8-ea40-4495-8661-a3b719aad0b9",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "bca2d20a-834b-4ac8-b468-acda78960c62",
+      "Name": "Program.cs",
+      "ParentId": "6ba9cfb8-ea40-4495-8661-a3b719aad0b9",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing FinancialPlanningAssistant.Services;\nusing FinancialPlanningAssistant.Data;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IGoalRepository, GoalRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddSingleton<IGoalService, GoalService>();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "e618e052-a48c-4c33-8171-1807e05033db",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:22:38.918205Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Savings Goal Tracker",
+    "Description": "Monitors progress toward personal savings objectives.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "78d0ea7a-8754-46f7-b8ec-b2a3d9631698",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "67f3ebdf-71fa-4bca-8434-8ec06dabd791",
+      "Name": "Program.cs",
+      "ParentId": "78d0ea7a-8754-46f7-b8ec-b2a3d9631698",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace SavingsGoalTracker\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "467347aa-730c-4acb-90d0-d3cb89d40830",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:23:28.014316Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Credit Card Management System",
+    "Description": "Oversees issuance, billing, and payments for credit cards.",
+    "Tags": [
+      {
+        "Id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+        "Name": "Credit"
+      },
+      {
+        "Id": "77777777-7777-7777-7777-777777777777",
+        "Name": "Payment"
+      },
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "cf59f884-d039-4f0b-9bcd-6ef334d97c12",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b8e327c8-dedc-4792-9ab8-0638bba46542",
+      "Name": "Program.cs",
+      "ParentId": "cf59f884-d039-4f0b-9bcd-6ef334d97c12",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace CreditCardManagementSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "43f6a98e-2cd2-48b5-89d7-c5ce8e6a9829",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:24:03.794317Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Debit Card Management System",
+    "Description": "Manages operations and transactions for debit cards.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "77777777-7777-7777-7777-777777777777",
+        "Name": "Payment"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5bd54d61-4eb0-4f92-819c-b032aa11ad86",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "a850e7f3-1c0a-4f81-9975-2dcc9b00bdb4",
+      "Name": "Program.cs",
+      "ParentId": "5bd54d61-4eb0-4f92-819c-b032aa11ad86",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing DebitCardManagementSystem.Services;\nusing DebitCardManagementSystem.Data;\nusing DebitCardManagementSystem.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IDebitCardService, DebitCardService>();\nbuilder.Services.AddSingleton<IDebitCardRepository, DebitCardRepository>();\nbuilder.Services.AddSingleton<IDebitCardLogger, DebitCardLogger>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7626eec8-f631-4ac5-9175-6117818904e9",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:24:37.549135Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Card Issuance Service",
+    "Description": "Automates the issuance and activation of bank cards.",
+    "Tags": [
+      {
+        "Id": "44444444-4444-4444-4444-444444444444",
+        "Name": "KYC"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "c1d60bb0-2a5e-4144-9ede-9815a8a3e9dd",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "edb41924-0657-4ecf-9f51-9cdd797e0ee9",
+      "Name": "Program.cs",
+      "ParentId": "c1d60bb0-2a5e-4144-9ede-9815a8a3e9dd",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing CardIssuanceService.Services;\nusing CardIssuanceService.Data;\nusing CardIssuanceService.Infrastructure;\n\nnamespace CardIssuanceService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            \n            // Register services\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<ICardService, CardService>();\n            builder.Services.AddSingleton<ICardRepository, CardRepository>();\n            builder.Services.AddSingleton<ICardIntegrationAdapter, CardIntegrationAdapter>();\n            builder.Services.AddHttpClient();\n            builder.Services.AddLogging();\n            \n            var app = builder.Build();\n\n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n\n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "a23ee610-5875-4a9f-93fe-91fedcf4d319",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:25:14.409368Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Contactless Payment Service",
+    "Description": "Supports NFC and contactless payment methods.",
+    "Tags": [
+      {
+        "Id": "77777777-7777-7777-7777-777777777777",
+        "Name": "Payment"
+      },
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f1a16f4e-daac-41ba-9bfc-149c52efa645",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4c148ee8-2b2c-4539-834b-3fdf7ac3bfcf",
+      "Name": "Program.cs",
+      "ParentId": "f1a16f4e-daac-41ba-9bfc-149c52efa645",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ContactlessPaymentService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "d7f16538-0d89-4657-9ef4-b13bed56e5a8",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:25:56.504138Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Loyalty Rewards Manager",
+    "Description": "Administers customer loyalty programs and reward points.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "594a332c-1ae0-4bd3-9665-1142f81805a2",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "79f2f8da-1498-4c83-9f2d-35f0fc6a2458",
+      "Name": "Program.cs",
+      "ParentId": "594a332c-1ae0-4bd3-9665-1142f81805a2",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing LoyaltyRewardsManager.Services;\nusing LoyaltyRewardsManager.Data;\nusing LoyaltyRewardsManager.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddScoped<ILoyaltyService, LoyaltyService>();\nbuilder.Services.AddSingleton<IRewardRepository, RewardRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "25ae4b0d-297f-4547-aa3b-ceb067253373",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:26:36.852355Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Mobile Banking Toolkit",
+    "Description": "Provides development tools for mobile banking applications.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "6293bd9c-656e-4403-b080-cd1e68ab3cca",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "8b852a8f-c76b-4502-8beb-1aaa1fb78cf7",
+      "Name": "Program.cs",
+      "ParentId": "6293bd9c-656e-4403-b080-cd1e68ab3cca",
+      "Type": 1,
+      "Text": "using MobileBankingToolkit.Services;\nusing MobileBankingToolkit.Infrastructure;\nusing MobileBankingToolkit.Data;\nusing Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Register services for dependency injection\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IBankingService, BankingService>();\nbuilder.Services.AddSingleton<IBankingRepository, BankingRepository>();\nbuilder.Services.AddSingleton<IPaymentIntegration, PaymentIntegration>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "dee43c53-58dc-44e0-b6dc-12a10ef71edc",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:27:35.179113Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Online Banking Portal",
+    "Description": "Enables secure access to banking services via the web.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      },
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f92416f9-4a5b-46e9-b6e9-917ae940ca65",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "e1a34340-369d-4681-b8e0-ef0e0d2f0b41",
+      "Name": "Program.cs",
+      "ParentId": "f92416f9-4a5b-46e9-b6e9-917ae940ca65",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.AspNetCore.Authentication.JwtBearer;\nusing Microsoft.IdentityModel.Tokens;\nusing System.Text;\nusing OnlineBankingPortal.Services;\nusing OnlineBankingPortal.Data;\nusing OnlineBankingPortal.Infrastructure;\nusing OnlineBankingPortal.Middleware;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure Services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IUserService, UserService>();\nbuilder.Services.AddSingleton<IAccountService, AccountService>();\nbuilder.Services.AddSingleton<ITransactionService, TransactionService>();\nbuilder.Services.AddSingleton<IUserRepository, UserRepository>();\nbuilder.Services.AddSingleton<IAccountRepository, AccountRepository>();\nbuilder.Services.AddSingleton<ITransactionRepository, TransactionRepository>();\nbuilder.Services.AddSingleton<ILoggerService, LoggerService>();\n\n// Configure JWT Authentication\nvar key = Encoding.ASCII.GetBytes(builder.Configuration[\"Jwt:Key\"]);\nbuilder.Services.AddAuthentication(options =>\n{\n    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;\n    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;\n})\n.AddJwtBearer(options =>\n{\n    options.TokenValidationParameters = new TokenValidationParameters\n    {\n        ValidateIssuer = true,\n        ValidateAudience = true,\n        ValidateLifetime = true,\n        ValidateIssuerSigningKey = true,\n        ValidIssuer = builder.Configuration[\"Jwt:Issuer\"],\n        ValidAudience = builder.Configuration[\"Jwt:Audience\"],\n        IssuerSigningKey = new SymmetricSecurityKey(key)\n    };\n});\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\n// Global Exception Handling Middleware\napp.UseMiddleware<ExceptionMiddleware>();\n\napp.UseAuthentication();\napp.UseRouting();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "010fb662-eb4b-4bd2-ae6d-ba81d76d75dc",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:28:01.673941Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Transaction Monitoring Service",
+    "Description": "Observes transactions in real time for irregularities.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "Name": "Fraud"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "864577ba-a97c-410b-9f21-ffbe6c77e70e",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4f669849-ee21-4775-912c-c5cf041bb442",
+      "Name": "Program.cs",
+      "ParentId": "864577ba-a97c-410b-9f21-ffbe6c77e70e",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing TransactionMonitoringService.Controllers;\nusing TransactionMonitoringService.Services;\nusing TransactionMonitoringService.Infrastructure;\nusing TransactionMonitoringService.Workers;\n\nnamespace TransactionMonitoringService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<ITransactionMonitoringService, TransactionMonitoringService.Services.TransactionMonitoringService>();\n            builder.Services.AddSingleton<ITransactionRepository, TransactionRepository>();\n            builder.Services.AddHostedService<TransactionMonitorWorker>();\n            builder.Services.AddLogging();\n\n            var app = builder.Build();\n            \n            app.UseRouting();\n\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n\n            app.Run();\n        }\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "0340c324-2995-4c69-9706-77da5c408e55",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:28:34.520670Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Batch Processing Engine",
+    "Description": "Handles large volumes of transactions in batch mode.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "c97c9e40-9ad2-4902-8148-06024c9279d2",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "daa0bc2c-e292-4cd3-9675-9b8775373063",
+      "Name": "Program.cs",
+      "ParentId": "c97c9e40-9ad2-4902-8148-06024c9279d2",
+      "Type": 1,
+      "Text": "using System;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.Extensions.Logging;\nusing Microsoft.Extensions.DependencyInjection;\nusing BatchProcessingEngine.BatchJobs;\nusing BatchProcessingEngine.Services;\nusing BatchProcessingEngine.Infrastructure;\nusing Microsoft.Extensions.Configuration;\n\nnamespace BatchProcessingEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureServices((hostContext, services) =>\n                {\n                    // Register configuration and logging\n                    services.AddHostedService<BatchJobWorker>();\n                    services.AddSingleton<IBatchProcessor, BatchProcessor>();\n                    services.AddSingleton<ITransactionRepository, TransactionRepository>();\n                })\n                .ConfigureLogging(logging =>\n                {\n                    logging.ClearProviders();\n                    logging.AddConsole();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "28665a5f-d9aa-487c-86b4-178744fc91cb",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:29:01.863802Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Real-Time Alert System",
+    "Description": "Sends immediate alerts for critical system events.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "fb727ef1-922a-40ea-aef1-fed7ecc49586",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "bcc39f86-0e50-4e83-a790-85bf8d23bc00",
+      "Name": "Program.cs",
+      "ParentId": "fb727ef1-922a-40ea-aef1-fed7ecc49586",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing RealTimeAlertSystem.Services;\nusing RealTimeAlertSystem.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IAlertService, AlertService>();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<IAlertDispatcher, AlertDispatcher>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  },
+  {
+    "Id": "cad53817-34bd-46ad-9f3e-39f5109256e9",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:29:27.440411Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Compliance Audit Tool",
+    "Description": "Conducts automated audits to ensure regulatory compliance.",
+    "Tags": [
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      },
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "baf9d3dc-84b7-4fb7-adc8-08fc1322ee9f",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "76162065-b0dc-41aa-a1c6-cfdbad020be7",
+      "Name": "Program.cs",
+      "ParentId": "baf9d3dc-84b7-4fb7-adc8-08fc1322ee9f",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ComplianceAuditTool\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "57800c98-20d8-44d1-83b5-3a254382e8b7",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:29:54.269440Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Encryption Service",
+    "Description": "Secures sensitive data using advanced encryption techniques.",
+    "Tags": [
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "7cc0bb16-d65a-4c2d-8c53-fe1a269fb959",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "75ffd1d6-5117-475f-9e00-ee5df6606817",
+      "Name": "Program.cs",
+      "ParentId": "7cc0bb16-d65a-4c2d-8c53-fe1a269fb959",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace DataEncryptionService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "b82eb9c2-fc5b-425c-a1a2-6945c47bc9cb",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:30:31.909274Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Secure File Transfer System",
+    "Description": "Facilitates encrypted file transfers between services.",
+    "Tags": [
+      {
+        "Id": "30303030-3030-3030-3030-303030303030",
+        "Name": "Encryption"
+      },
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "219c773c-f12e-4972-9ca6-2ee050461a44",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4434a13a-a895-4797-94c0-58ebdb18d57a",
+      "Name": "Program.cs",
+      "ParentId": "219c773c-f12e-4972-9ca6-2ee050461a44",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace SecureFileTransferSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "5a5e4108-e2db-4685-b985-10eba8afd60a",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:30:55.815108Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Biometric Authentication Service",
+    "Description": "Uses biometric data for secure user authentication.",
+    "Tags": [
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "52e56e33-062f-46f1-bea0-f8c8b07f177d",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "029cca8d-84db-46a5-80ff-1ff2e8dc0c21",
+      "Name": "Program.cs",
+      "ParentId": "52e56e33-062f-46f1-bea0-f8c8b07f177d",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing BiometricAuthenticationService.Services;\nusing BiometricAuthenticationService.Data;\nusing BiometricAuthenticationService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IBiometricAuthService, BiometricAuthService>();\nbuilder.Services.AddSingleton<IUserRepository, UserRepository>();\nbuilder.Services.AddSingleton<AuditLogger>();\nbuilder.Services.AddSingleton<BiometricScanner>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "a9d46b2d-e265-4fd7-b50e-c921ff7431ba",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:31:31.479674Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Identity Verification System",
+    "Description": "Validates user identities through multiple verification methods.",
+    "Tags": [
+      {
+        "Id": "44444444-4444-4444-4444-444444444444",
+        "Name": "KYC"
+      },
+      {
+        "Id": "11111111-1111-1111-1111-111111111111",
+        "Name": "Authentication"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "d6194ff1-fb37-41f4-b9ea-a26b0e668828",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "65a5855d-aab9-4637-838e-668802ffae12",
+      "Name": "Program.cs",
+      "ParentId": "d6194ff1-fb37-41f4-b9ea-a26b0e668828",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace IdentityVerificationSystem\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "24f973d0-ca37-4026-904b-4ddcd0311036",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:31:54.896921Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Third-Party Integration Hub",
+    "Description": "Centralizes integrations with external service providers.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e23d090b-9bc9-4ab9-a9a9-295701bd3e2c",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4fda0420-4e99-4af7-bfee-1f20efaaea2c",
+      "Name": "Program.cs",
+      "ParentId": "e23d090b-9bc9-4ab9-a9a9-295701bd3e2c",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing ThirdPartyIntegrationHub.Services;\nusing ThirdPartyIntegrationHub.Infrastructure;\nusing Microsoft.Extensions.Configuration;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<IIntegrationService, IntegrationService>();\nbuilder.Services.AddSingleton<IHttpClientWrapper, HttpClientWrapper>();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\napp.UseAuthorization();\n\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "8786115a-6bc5-4bb0-b4fa-49340c9670e9",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:32:21.761011Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "API Rate Limiting Service",
+    "Description": "Manages and enforces API call limits to prevent misuse.",
+    "Tags": [
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e7cd808c-3d48-4b05-bb14-a28769ab9153",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "0b57acb9-2530-4eed-8b7c-588ea059e049",
+      "Name": "Program.cs",
+      "ParentId": "e7cd808c-3d48-4b05-bb14-a28769ab9153",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing APIRateLimitingService.Middleware;\nusing APIRateLimitingService.Services;\nusing APIRateLimitingService.Models;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IRateLimitingService, RateLimitingService>();\nbuilder.Services.Configure<RateLimitConfiguration>(builder.Configuration.GetSection(\"RateLimitConfiguration\"));\nbuilder.Services.AddHttpContextAccessor();\n\nvar app = builder.Build();\n\n// Use rate limiting middleware\napp.UseMiddleware<RateLimitingMiddleware>();\n\napp.UseRouting();\napp.MapControllers();\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "f057b81a-7789-43a2-b26d-17f57128e954",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:32:51.251447Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Service Rate Limiter",
+    "Description": "Applies limits on API calls across the system to control load.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "ecc79491-a984-4349-9adf-e7ce8dc33c6b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "9b9e5132-9e36-4d96-9d59-7f5035f74854",
+      "Name": "Program.cs",
+      "ParentId": "ecc79491-a984-4349-9adf-e7ce8dc33c6b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing Microsoft.Extensions.Configuration;\nusing ServiceRateLimiter.Middleware;\nusing ServiceRateLimiter.Extensions;\nusing ServiceRateLimiter.Services;\nusing ServiceRateLimiter.Data;\nusing ServiceRateLimiter.Models;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure services\nbuilder.Services.AddMemoryCache();\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IRateLimitStore, InMemoryRateLimitStore>();\nbuilder.Services.AddSingleton<IRateLimiterService, RateLimiterService>();\n\n// Bind RateLimitPolicy from configuration with defaults if not set\nvar rateLimitPolicy = new RateLimitPolicy();\nbuilder.Configuration.GetSection(\"RateLimitPolicy\").Bind(rateLimitPolicy);\nif(rateLimitPolicy.Limit == 0) rateLimitPolicy.Limit = 100;\nif(rateLimitPolicy.WindowSeconds == 0) rateLimitPolicy.WindowSeconds = 60;\nbuilder.Services.AddSingleton(rateLimitPolicy);\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseRateLimiter(); // Apply the rate limiting middleware\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "15265b3a-68a0-4190-803d-f303dc2c687c",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:33:11.769054Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Service Health Monitor",
+    "Description": "Continuously checks the health and performance of services.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "01e48628-adbc-4a1b-9c54-a5c72cf4c504",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "7f65affa-82e2-47f1-9028-6b347cffce77",
+      "Name": "Program.cs",
+      "ParentId": "01e48628-adbc-4a1b-9c54-a5c72cf4c504",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace ServiceHealthMonitor\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "4d55f44a-51b8-4f62-aa4f-8ccb709b3eee",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:33:41.713280Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Incident Management System",
+    "Description": "Handles the reporting and resolution of system incidents.",
+    "Tags": [
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "f3aab522-29c3-4841-8f5d-9c91a33f837d",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "c95e0df3-6fbe-4d92-a45f-158983648585",
+      "Name": "Program.cs",
+      "ParentId": "f3aab522-29c3-4841-8f5d-9c91a33f837d",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing IncidentManagementSystem.Services;\nusing IncidentManagementSystem.Data;\nusing IncidentManagementSystem.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IIncidentService, IncidentService>();\nbuilder.Services.AddSingleton<IIncidentRepository, IncidentRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\nbuilder.Services.AddSingleton<ILoggerService, LoggerService>();\nbuilder.Services.AddSingleton<IAuditService, AuditService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "d3df8d81-0439-480a-b81c-6c58bd92e0db",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:34:20.968176Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Backup and Recovery Service",
+    "Description": "Provides automated data backup and recovery solutions.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      },
+      {
+        "Id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+        "Name": "Audit"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "36b286d8-4e34-4d31-b114-a63eee9282a7",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "35b1e6a7-04df-4232-b690-a676cbb56aae",
+      "Name": "Program.cs",
+      "ParentId": "36b286d8-4e34-4d31-b114-a63eee9282a7",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace BackupAndRecoveryService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "ec212803-cad2-42a6-8aa2-00edde990b28",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:34:48.872507Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Disaster Recovery Module",
+    "Description": "Implements strategies to recover from major system failures.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "10101010-1010-1010-1010-101010101010",
+        "Name": "Configuration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "a7e3c112-7f0c-4280-9719-ff0f91385938",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b8bd752b-65f8-4149-8356-69839bb4b6d2",
+      "Name": "Program.cs",
+      "ParentId": "a7e3c112-7f0c-4280-9719-ff0f91385938",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\n\nnamespace DisasterRecoveryModule\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n\n            // Register services\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<Services.IRecoveryService, Services.RecoveryService>();\n            builder.Services.AddHostedService<Infrastructure.RecoveryMonitorService>();\n\n            var app = builder.Build();\n\n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n\n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "0d98a68c-7640-4c44-83a1-7e9db6d80e69",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:35:20.946830Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "System Performance Profiler",
+    "Description": "Analyzes system performance to identify bottlenecks.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "95721616-e6e0-4916-b041-72de8da1d6f3",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b12114ae-8923-445e-8106-7171ad9f4cc8",
+      "Name": "Program.cs",
+      "ParentId": "95721616-e6e0-4916-b041-72de8da1d6f3",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace SystemPerformanceProfiler\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "3297e003-0fbf-4edd-a992-2a04b11610c7",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:35:59.348862Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Error Reporting Service",
+    "Description": "Collects and reports system errors for troubleshooting.",
+    "Tags": [
+      {
+        "Id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+        "Name": "Logging"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "669c11ff-f143-473f-b4f9-2919a76e6038",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4e261a9f-f81f-47da-bc72-3fbd729136e2",
+      "Name": "Program.cs",
+      "ParentId": "669c11ff-f143-473f-b4f9-2919a76e6038",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Configuration;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing ErrorReportingService.Services;\nusing ErrorReportingService.Repositories;\nusing ErrorReportingService.Infrastructure;\nusing ErrorReportingService.Configurations;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Bind EmailSettings configuration\nbuilder.Services.Configure<EmailSettings>(builder.Configuration.GetSection(\"EmailSettings\"));\n\n// Register services, repositories, and infrastructure components\nbuilder.Services.AddSingleton<IErrorService, ErrorService>();\nbuilder.Services.AddSingleton<IErrorRepository, ErrorRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\n\n// Add controllers\nbuilder.Services.AddControllers();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "6e39dd62-ef1d-4ffd-b0fe-28be7fa2cecf",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:36:22.889950Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Business Intelligence Dashboard",
+    "Description": "Displays key performance metrics and business insights.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "741688f1-7f37-45f1-a001-3967a4bf9a14",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "c60176d2-61f1-4fb1-b505-bc00d1ac3e24",
+      "Name": "Program.cs",
+      "ParentId": "741688f1-7f37-45f1-a001-3967a4bf9a14",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace BusinessIntelligenceDashboard\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "c6650441-4caa-4b14-bf3e-b0640b5bf208",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:36:43.084541Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Data Warehouse Connector",
+    "Description": "Connects the system to data warehouses for analytics.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "1f10e1e0-827b-4d5c-bcc3-036b855fd76b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "5ae68329-1089-41b0-9198-485670a04d73",
+      "Name": "Program.cs",
+      "ParentId": "1f10e1e0-827b-4d5c-bcc3-036b855fd76b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.Configuration;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing DataWarehouseConnector.Services;\nusing DataWarehouseConnector.Connectors;\nusing DataWarehouseConnector.Configurations;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Bind warehouse configuration from appsettings.json\nbuilder.Services.Configure<WarehouseConfiguration>(builder.Configuration.GetSection(\"WarehouseConfiguration\"));\n\n// Register application services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IWarehouseConnector, WarehouseConnector>();\nbuilder.Services.AddSingleton<IAnalyticsService, AnalyticsService>();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "bb058f18-3d89-4a32-948b-833fac3818f1",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:37:10.440147Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Machine Learning Integration",
+    "Description": "Integrates machine learning models for enhanced analytics.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "abb154f6-12ca-41bb-b237-1a1fc412e2ad",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "3ee72f6d-3ae9-4057-b555-640977d83428",
+      "Name": "Program.cs",
+      "ParentId": "abb154f6-12ca-41bb-b237-1a1fc412e2ad",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace MachineLearningIntegration\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "4e88edf2-8977-45ed-bea7-9e3ebaa5b9b6",
+    "CreatedById": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+    "CreatedDateUtc": "2025-02-08T18:37:37.939374Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Anomaly Detection Engine",
+    "Description": "Identifies unusual patterns in transactions and behavior.",
+    "Tags": [
+      {
+        "Id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+        "Name": "Fraud"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e80a6661-9e5b-4788-9bff-4c03d516830b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "4fa50f7a-9a1e-4add-b9f3-0cc409a16dcc",
+      "Name": "Program.cs",
+      "ParentId": "e80a6661-9e5b-4788-9bff-4c03d516830b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing AnomalyDetectionEngine.Services;\nusing AnomalyDetectionEngine.Data;\nusing AnomalyDetectionEngine.Utils;\n\nnamespace AnomalyDetectionEngine\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<IAnomalyDetectionService, AnomalyDetectionService>();\n            builder.Services.AddSingleton<IAnomalyRepository, AnomalyRepository>();\n            builder.Services.AddSingleton<AnomalyDetector>();\n            builder.Services.AddLogging();\n            \n            var app = builder.Build();\n            \n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n            \n            app.Run();\n        }\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "2a3b4c5d-6e7f-8a9b-0c1d-2e3f4a5b6c7d",
+      "Name": "Hannah Miller",
+      "Email": "hannah.miller@digitalbank.com"
+    }
+  },
+  {
+    "Id": "46e40a8f-469e-45ea-83d5-e665c7142eb4",
+    "CreatedById": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+    "CreatedDateUtc": "2025-02-08T18:38:10.117428Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Customer Segmentation Tool",
+    "Description": "Divides customers into segments based on behavior and demographics.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "b32a8949-2e61-486f-ad3d-787ddbc6a723",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "50e07f4f-8e1b-47d8-a60a-bbd477cfde49",
+      "Name": "Program.cs",
+      "ParentId": "b32a8949-2e61-486f-ad3d-787ddbc6a723",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace CustomerSegmentationTool\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "e3f1c4d0-7fbb-4a20-99ad-1a4d51a1f2e1",
+      "Name": "Alice Johnson",
+      "Email": "alice.johnson@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7e2f90b1-5c7f-44be-baaa-b362f8963679",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:38:51.550961Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Marketing Campaign Manager",
+    "Description": "Coordinates marketing campaigns and customer outreach efforts.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "a4a2b958-fa69-49ef-adf8-86f839f3685c",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "e424158f-4020-42c8-a350-eaccde436788",
+      "Name": "Program.cs",
+      "ParentId": "a4a2b958-fa69-49ef-adf8-86f839f3685c",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing MarketingCampaignManager.Services;\nusing MarketingCampaignManager.Data;\nusing MarketingCampaignManager.Integration;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Register application services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<ICampaignService, CampaignService>();\nbuilder.Services.AddSingleton<ICampaignRepository, CampaignRepository>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints => {\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "22eba439-2beb-4d0d-acc6-b331d91746a6",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:39:21.478510Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Social Media Integration Service",
+    "Description": "Connects social media channels for enhanced customer engagement.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "c137de94-1677-40b8-8fa3-965b4878df5a",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "1e8b09ab-18b6-4bd5-8e06-9888b64c1318",
+      "Name": "Program.cs",
+      "ParentId": "c137de94-1677-40b8-8fa3-965b4878df5a",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing SocialMediaIntegrationService.Services;\nusing SocialMediaIntegrationService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<ISocialMediaService, SocialMediaService>();\nbuilder.Services.AddSingleton<ISocialMediaAdapter, SocialMediaAdapter>();\nbuilder.Services.AddLogging();\n\nvar app = builder.Build();\n\nif (app.Environment.IsDevelopment())\n{\n    app.UseDeveloperExceptionPage();\n}\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "001ecb52-d945-4bf2-bfa0-9996b4c1a659",
+    "CreatedById": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    "CreatedDateUtc": "2025-02-08T18:39:50.754962Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "SMS Gateway Connector",
+    "Description": "Interfaces with SMS gateways for reliable message delivery.",
+    "Tags": [
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "5111a20e-9039-4221-a702-802e986c41c8",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "80ff98b3-d6db-42ae-88e3-7eb90507b658",
+      "Name": "Program.cs",
+      "ParentId": "5111a20e-9039-4221-a702-802e986c41c8",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace SMSGatewayConnector\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "1d2c3b4a-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "Name": "Fiona Adams",
+      "Email": "fiona.adams@digitalbank.com"
+    }
+  },
+  {
+    "Id": "0ef0e638-b578-4f4f-adbf-d06faf291987",
+    "CreatedById": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+    "CreatedDateUtc": "2025-02-08T18:40:16.452684Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Compliance Dashboard",
+    "Description": "Provides an overview of regulatory compliance metrics.",
+    "Tags": [
+      {
+        "Id": "50505050-5050-5050-5050-505050505050",
+        "Name": "Compliance"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "ea3c0217-b633-458c-98ed-3ccac51a1c46",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "dfb557d8-50a2-475e-8898-745017d33f25",
+      "Name": "Program.cs",
+      "ParentId": "ea3c0217-b633-458c-98ed-3ccac51a1c46",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing ComplianceDashboard.Services;\nusing ComplianceDashboard.Data;\nusing ComplianceDashboard.Infrastructure;\n\nnamespace ComplianceDashboard\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddSingleton<IComplianceService, ComplianceService>();\n            builder.Services.AddSingleton<IComplianceRepository, ComplianceRepository>();\n            builder.Services.AddSingleton<ComplianceMetricCalculator>();\n            \n            var app = builder.Build();\n            \n            if (app.Environment.IsDevelopment())\n            {\n                app.UseDeveloperExceptionPage();\n            }\n            \n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n            \n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "f5a7b8c9-d1e2-4f6a-a3d7-8c9f0e7b6a2c",
+      "Name": "Charlie Brown",
+      "Email": "charlie.brown@digitalbank.com"
+    }
+  },
+  {
+    "Id": "69e7f089-c047-4fb5-b958-14ae070f1393",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:40:40.808989Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Interest Accrual Calculator",
+    "Description": "Calculates the interest accrued on savings and loans.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "03ef88e9-ea7f-425e-b8ae-7784aa6f852b",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "76883340-8382-4661-b383-f1b7dd9f9dfb",
+      "Name": "Program.cs",
+      "ParentId": "03ef88e9-ea7f-425e-b8ae-7784aa6f852b",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\n\nnamespace InterestAccrualCalculator\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            builder.Services.AddControllers();\n            builder.Services.AddScoped<Services.IInterestService, Services.InterestService>();\n\n            var app = builder.Build();\n\n            app.UseRouting();\n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n\n            app.Run();\n        }\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "b5d46131-ab96-417a-b8d3-2760fa3381d2",
+    "CreatedById": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+    "CreatedDateUtc": "2025-02-08T18:41:13.932960Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Dividend Distribution Manager",
+    "Description": "Manages the distribution of dividends to investors.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "99999999-9999-9999-9999-999999999999",
+        "Name": "Settlement"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "860b7244-d0d0-4a10-9a50-c5a05559f76d",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "375cbdc6-0b8e-487b-9357-c716eacc4548",
+      "Name": "Program.cs",
+      "ParentId": "860b7244-d0d0-4a10-9a50-c5a05559f76d",
+      "Type": 1,
+      "Text": "using DividendDistributionManager.Services;\nusing DividendDistributionManager.Data;\nusing DividendDistributionManager.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IDividendService, DividendService>();\nbuilder.Services.AddSingleton<IDividendRepository, DividendRepository>();\nbuilder.Services.AddSingleton<IPaymentProcessor, PaymentProcessor>();\nbuilder.Services.AddSingleton<INotificationService, NotificationService>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "bb4d6e21-6c63-4f80-ae18-3e5a7b8f77d2",
+      "Name": "Bob Smith",
+      "Email": "bob.smith@digitalbank.com"
+    }
+  },
+  {
+    "Id": "6413a3f8-7ddf-4f68-b815-e03e40aa0a4c",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:41:41.182052Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Portfolio Rebalancing Assistant",
+    "Description": "Helps in rebalancing investment portfolios periodically.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "a2725d50-7750-4e2d-a20e-dbfb41f53390",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "ffd3e40d-9886-4ec6-b342-ea8b9c45e969",
+      "Name": "Program.cs",
+      "ParentId": "a2725d50-7750-4e2d-a20e-dbfb41f53390",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing PortfolioRebalancingAssistant.Services;\nusing PortfolioRebalancingAssistant.Infrastructure;\nusing PortfolioRebalancingAssistant.Utils;\n\nvar builder = WebApplication.CreateBuilder(args);\n\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<IRebalancingService, RebalancingService>();\nbuilder.Services.AddSingleton<IPriceService, PriceService>();\nbuilder.Services.AddSingleton<IFinancialCalculator, FinancialCalculator>();\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "540288e5-cfd4-4d07-bc26-8cea9e1de319",
+    "CreatedById": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+    "CreatedDateUtc": "2025-02-08T18:42:10.780852Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Wealth Management Platform",
+    "Description": "Offers tools and services for managing wealth and assets.",
+    "Tags": [
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+        "Name": "Notification"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "e5f3ba06-300d-46a5-99bf-342dd17970b7",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "b9a54873-ea03-4d73-b91d-c3c31e6d7001",
+      "Name": "Program.cs",
+      "ParentId": "e5f3ba06-300d-46a5-99bf-342dd17970b7",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace WealthManagementPlatform\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "7c8d9e0a-b1c2-4d3e-8f9a-0b1c2d3e4f5a",
+      "Name": "Evan Lee",
+      "Email": "evan.lee@digitalbank.com"
+    }
+  },
+  {
+    "Id": "788f04cd-675e-4cbf-a2a1-d71b5eca8a78",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:42:39.659822Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Market Data Feed Connector",
+    "Description": "Integrates live market data feeds for real-time insights.",
+    "Tags": [
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "c5e86c19-b9b6-4b94-ae70-f75bb8eb507a",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "f45d54ba-6f85-456b-8b47-9d5a2e21532f",
+      "Name": "Program.cs",
+      "ParentId": "c5e86c19-b9b6-4b94-ae70-f75bb8eb507a",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.Configuration;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing MarketDataFeedConnector.Services;\nusing MarketDataFeedConnector.Infrastructure;\nusing Microsoft.Extensions.Logging;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Add configuration for Market Data API\nbuilder.Configuration.AddJsonFile(\"appsettings.json\", optional: true, reloadOnChange: true);\n\n// Register services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<IMarketDataService, MarketDataService>();\nbuilder.Services.AddSingleton<IMarketDataConnector, MarketDataConnector>();\n// Configure HttpClient for MarketDataConnector\nbuilder.Services.AddHttpClient<IMarketDataConnector, MarketDataConnector>();\n\nbuilder.Services.AddLogging(config => {\n    config.AddConsole();\n    config.AddDebug();\n});\n\nvar app = builder.Build();\n\napp.UseRouting();\n\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "caab5e2c-f536-4bcb-a7ef-3838899618ac",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:43:16.641093Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Derivatives Trading Service",
+    "Description": "Supports the trading of financial derivatives.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      },
+      {
+        "Id": "20202020-2020-2020-2020-202020202020",
+        "Name": "Analytics"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "b594d9c3-9e26-433e-b66b-cdf8f54ef376",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "79cf1b3d-0207-4b74-ab8c-d5d9579f96d6",
+      "Name": "Program.cs",
+      "ParentId": "b594d9c3-9e26-433e-b66b-cdf8f54ef376",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing DerivativesTradingService.Services;\nusing DerivativesTradingService.Data;\nusing DerivativesTradingService.Integration;\nusing DerivativesTradingService.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Register services\nbuilder.Services.AddControllers();\nbuilder.Services.AddSingleton<ITradingService, TradingService>();\nbuilder.Services.AddSingleton<IOrderRepository, OrderRepository>();\nbuilder.Services.AddSingleton<IRiskManager, RiskManager>();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddSingleton<ITradingIntegrationAdapter, TradingIntegrationAdapter>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseAuthorization();\napp.MapControllers();\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "7858462f-b367-4917-9af5-ab94ac954ede",
+    "CreatedById": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+    "CreatedDateUtc": "2025-02-08T18:43:55.349047Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Futures Trading Platform",
+    "Description": "Enables the trading of futures contracts securely.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "18c19115-f4ae-46e6-9a79-30fe1eeea8ff",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "a33beb14-e00d-4219-b4a9-c3766824522d",
+      "Name": "Program.cs",
+      "ParentId": "18c19115-f4ae-46e6-9a79-30fe1eeea8ff",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace FuturesTradingPlatform\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n        \n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "0a3b7e89-f6d2-4e3b-9b4c-2d6f7e8a9b0c",
+      "Name": "Dana White",
+      "Email": "dana.white@digitalbank.com"
+    }
+  },
+  {
+    "Id": "b42c91fa-72ad-482b-aa07-80e4e33561cb",
+    "CreatedById": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "CreatedDateUtc": "2025-02-08T18:44:29.100314Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Options Trading Service",
+    "Description": "Provides functionalities to trade options efficiently.",
+    "Tags": [
+      {
+        "Id": "66666666-6666-6666-6666-666666666666",
+        "Name": "Transaction"
+      },
+      {
+        "Id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+        "Name": "Risk"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "54e87428-f814-4a15-a1a1-38d037bb0329",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "5fd987a8-072d-412b-a7d8-6e8aafe9bf1b",
+      "Name": "Program.cs",
+      "ParentId": "54e87428-f814-4a15-a1a1-38d037bb0329",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Hosting;\nusing Microsoft.Extensions.Hosting;\n\nnamespace OptionsTradingService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            CreateHostBuilder(args).Build().Run();\n        }\n\n        public static IHostBuilder CreateHostBuilder(string[] args) =>\n            Host.CreateDefaultBuilder(args)\n                .ConfigureWebHostDefaults(webBuilder =>\n                {\n                    webBuilder.UseStartup<Startup>();\n                });\n    }\n}\n",
+      "Language": 0
+    },
+    "User": {
+      "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+      "Name": "Ian Wright",
+      "Email": "ian.wright@digitalbank.com"
+    }
+  },
+  {
+    "Id": "9c714162-6177-458a-ab86-7d43d1910783",
+    "CreatedById": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+    "CreatedDateUtc": "2025-02-08T18:44:50.873958Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Clearing House Interface",
+    "Description": "Facilitates communication with clearing houses for settlements.",
+    "Tags": [
+      {
+        "Id": "99999999-9999-9999-9999-999999999999",
+        "Name": "Settlement"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "af19350d-188d-4860-bd7b-39acd89a6478",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "23f44ed2-e681-41db-b86d-5aaddc7cc93b",
+      "Name": "Program.cs",
+      "ParentId": "af19350d-188d-4860-bd7b-39acd89a6478",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.Configuration;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing ClearingHouseInterface.Services;\nusing ClearingHouseInterface.Infrastructure;\n\nvar builder = WebApplication.CreateBuilder(args);\n\n// Configure services\nbuilder.Services.AddControllers();\nbuilder.Services.AddHttpClient();\nbuilder.Services.AddScoped<IClearingHouseService, ClearingHouseService>();\nbuilder.Services.AddScoped<IClearingHouseAdapter, ClearingHouseAdapter>();\n\nvar app = builder.Build();\n\napp.UseRouting();\napp.UseEndpoints(endpoints =>\n{\n    endpoints.MapControllers();\n});\n\napp.Run();",
+      "Language": 0
+    },
+    "User": {
+      "Id": "9b8a7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "Name": "George King",
+      "Email": "george.king@digitalbank.com"
+    }
+  },
+  {
+    "Id": "95f9af33-4468-45d7-84c9-f3c68e7c5fba",
+    "CreatedById": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+    "CreatedDateUtc": "2025-02-08T18:45:22.775089Z",
+    "IsDeleted": false,
+    "LastModifiedById": null,
+    "LastModifiedDateUtc": null,
+    "Name": "Settlement Reconciliation Service",
+    "Description": "Reconciles settlement data across different systems.",
+    "Tags": [
+      {
+        "Id": "99999999-9999-9999-9999-999999999999",
+        "Name": "Settlement"
+      },
+      {
+        "Id": "40404040-4040-4040-4040-404040404040",
+        "Name": "Integration"
+      }
+    ],
+    "AssetType": 1,
+    "Language": 0,
+    "RootFolderId": "aac06764-dcbf-4f59-89f8-da19b230fcc9",
+    "CompanyId": "DigitalBankCo",
+    "PrimaryCodeFile": {
+      "Id": "ce20e8a9-b19a-47f3-87e2-9027c35f3f3d",
+      "Name": "Program.cs",
+      "ParentId": "aac06764-dcbf-4f59-89f8-da19b230fcc9",
+      "Type": 1,
+      "Text": "using Microsoft.AspNetCore.Builder;\nusing Microsoft.Extensions.DependencyInjection;\nusing Microsoft.Extensions.Hosting;\nusing SettlementReconciliationService.Services;\nusing SettlementReconciliationService.Data;\nusing SettlementReconciliationService.Infrastructure;\n\nnamespace SettlementReconciliationService\n{\n    public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var builder = WebApplication.CreateBuilder(args);\n            \n            // Register services\n            builder.Services.AddControllers();\n            builder.Services.AddHttpClient();\n            builder.Services.AddScoped<IReconciliationService, ReconciliationService>();\n            builder.Services.AddScoped<ISettlementRepository, SettlementRepository>();\n            builder.Services.AddScoped<ISettlementAdapter, SettlementAdapter>();\n            builder.Services.AddLogging();\n            \n            var app = builder.Build();\n            \n            app.UseRouting();\n            \n            app.UseEndpoints(endpoints =>\n            {\n                endpoints.MapControllers();\n            });\n            \n            app.Run();\n        }\n    }\n}",
+      "Language": 0
+    },
+    "User": {
+      "Id": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a",
+      "Name": "Julia Roberts",
+      "Email": "julia.roberts@digitalbank.com"
+    }
+  }
+]
