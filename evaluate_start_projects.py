@@ -6,7 +6,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # File paths
 INPUT_CSV = "100_start_projects.csv"        # CSV with headers: ProjectDescription,AssetsUsed
-OUTPUT_CSV = "100_start_projects_results_4.1-nano.csv"  # Output CSV that will be written row by row
+OUTPUT_CSV = "100_start_projects_results_gpt-4.1-nano.csv"  # Output CSV that will be written row by row
 
 # API endpoint
 API_URL = "https://host.docker.internal:7259/start-projects"
